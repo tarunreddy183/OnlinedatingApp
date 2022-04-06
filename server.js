@@ -126,6 +126,33 @@ app.get('/profile',requireLogin,(req,res) => {
         } 
     });
 });
+app.post('/updateProfile',requireLogin,(req,res) => {
+    User.findById({_id:req.user._id})
+    .then((user) => {
+        user.fullname = req.body.fullname;
+        user.email = req.body.email;
+        user.gender = req.body.gender;
+        user.about = req.body.about;
+        user.save(() => {
+            res.redirect('/profile');
+        });
+    });
+});
+
+app.get('/askToDelete',(req,res) => {
+    res.render('askToDelete',{
+        title: 'Delete'
+    });
+});
+
+app.get('/deleteAccount',(req,res) => {
+    User.deleteOne({_id:req.user._id})
+    .then(() => {
+        res.render('accountDeleted',{
+            title:'Deleted'
+        });
+    });
+});
 
 app.get('/newAccount',(req,res) => {
     res.render('newAccount',{
@@ -206,7 +233,7 @@ app.get('/uploadImage',(req,res) => {
 app.post('/uploadAvatar',(req,res) => {
     User.findById({_id:req.user._id})
     .then((user) => {
-        user.image = req.body.upload;
+        user.image = `https://online-dating-app.s3.ap-south-1.amazonaws.com/${req.body.upload}`;
         user.save((err) => {
             if (err) {
                 throw err;

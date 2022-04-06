@@ -32,7 +32,7 @@ passport.use(new FacebookStrategy({
                 fullname: profile.displayName,
                 lastname: profile.name.familyName,
                 firstname: profile.name.givenName,
-                image: encodeURIComponent('https://graph.facebook.com/${profile.id}/picture?size=large'),
+                image: encodeURIComponent(`https://graph.facebook.com/${profile.id}/picture?size=large`),
                 email: profile.emails[0].value
             }
             new User(newUser).save((err,user) => {
