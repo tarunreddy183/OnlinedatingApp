@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-sm-4 payment center">
+        <h3 class="green">$10</h3>
+        <p>Buy 20 messages for $10</p>
+
+        <form action="/charge10dollars" method="POST">
+            <script src="https://checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                    data-key="{{StripePublishableKey}}"
+                    data-amount="1000" 
+                    data-currency="inr"
+                    data-name="Dating App"
+                    data-descripton="$10 for 20 messages"
+                    data-image="/img/love.jpg"
+                    data-locale="auto">
+            </script>
+        </form>
+    </div>
+
+    <div class="col-sm-4 payment center">
+        <h3 class="green">$20</h3>
+        <p>Buy 50 messages for $20</p>
+
+        <form action="/charge20dollars" method="POST">
+            <script src="https://checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                    data-key="{{StripePublishableKey}}"
+                    data-amount="2000" 
+                    data-currency="inr"
+                    data-name="Dating App"
+                    data-descripton="$20 for 50 messages"
+                    data-image="/img/love.jpg"
+                    data-locale="auto">
+            </script>
+        </form>
+    </div>
+
+    <div class="col-sm-4 payment center">
+        <h3 class="green">$30</h3>
+        <p>Buy 100 messages for $30</p>
+
+        <form action="/charge30dollars" method="POST">
+            <script src="https://checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                    data-key="{{StripePublishableKey}}"
+                    data-amount="3000" 
+                    data-currency="inr"
+                    data-name="Dating App"
+                    data-descripton="$30 for 100 messages"
+                    data-image="/img/love.jpg"
+                    data-locale="auto">
+            </script>
+        </form>
+    </div>
+
+    <div class="col-sm-4 payment center">
+        <h3 class="green">$40</h3>
+        <p>Buy 200 messages for $40</p>
+
+        <form action="/charge40dollars" method="POST">
+            <script src="https://checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                    data-key="{{StripePublishableKey}}"
+                    data-amount="4000" 
+                    data-currency="inr"
+                    data-name="Dating App"
+                    data-descripton="$40 for 200 messages"
+                    data-image="/img/love.jpg"
+                    data-locale="auto">
+            </script>
+        </form>
+    </div>
+</div>

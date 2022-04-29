@@ -1,0 +1,32 @@
+{{#each posts}}
+<div class="media">
+    <img src="{{postUser.image}}" class="mr-3" width="64px">
+    <div class="media-body">
+        <h5 class="mt-0">{{title}} <i class="fa fa-globe"></i></h5>
+        <p>{{body}}</p>
+        <img src="{{image}}" class="img-fluid">
+        <br>
+        <small>{{getLastMoment date 'hour'}}</small>
+        <br>
+        <h4>
+            <a href="/likePost/{{_id}}">
+            <i class="fa fa-thumbs-up post-icons">Like</i>
+            </a>
+
+            {{#if allowComments}}
+            <a href="/fullpost/{{_id}}">
+            <i class="fa fa-comments-o post-icons"> Comment</i>
+            </a>
+            {{else}}
+            <p class="red">Comment is not allowed</p>
+            {{/if}}
+        </h4>
+
+        <br>
+        <a href="/fullPost/{{_id}}">View More</a>
+    </div>
+</div>
+<hr>
+{{else}}
+<p>No Posts found ...</p>
+{{/each}}

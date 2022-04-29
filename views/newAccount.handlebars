@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm"></div>
+    <div class="col-sm-3">
         <form action="/signup" method="POST">
         {{#each errors}}
         <div class="alert alert-danger">
@@ -7,6 +8,7 @@
         </div>
         {{/each}}
             <div class="form-group">
+                <h2 class="center">Register</h2>
                 <label for="username">Fullname</label>
                 <input type="text" name="username" id="username" value="{{fullname}}"
                 class="form-control" required>
@@ -29,4 +31,5 @@
             <button type="submit" class="btn btn-primary">Signup</button>
         </form>
     </div>
+    <div class="col-sm"></div>
 </div>

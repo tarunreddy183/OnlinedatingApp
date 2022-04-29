@@ -9,4 +9,77 @@
 }
 .fa-edit{
     cursor: pointer;
+    color: blue;
+    margin-right: 10px;
+}
+a:visited{
+    margin-right: 10px;
+}
+.col-sm-3{
+    margin: 5px 5px 5px 5px;
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
+}
+.chatroom-users{
+    width: 64px;
+    height: 64px;
+}
+#messages{
+    height: 300px;
+    overflow-y: scroll;
+}
+.right{
+    float: right;
+}
+.single-icons{
+    margin-top: 10px;
+}
+#main-body{
+    margin-top: 100px;
+}
+#main-footer{
+    margin-bottom: 100px;
+}
+/* Style for payment options */
+.payment{
+    background-color: black;
+    color: aliceblue;
+    margin: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid red;
+}
+.post-icons{
+    margin-right: 10px;
+}
+.btn-facebook{
+    background: #4aa1f3;
+    border-radius: 0%;
+    color: #fff;
+    width: auto;
+}
+.btn-facebook:link,
+.btn-facebook:visited{
+    color: #fff;
+    background: #4aa1f3;
+    text-decoration: none;
+}
+.btn-facebook:active,
+.btn-facebook:hover{
+    background: #4aa1f3;
+    color: #fff;
+}
+/*google btn*/
+.btn-google{
+    background: #e44b34;
+    color: #fff;
+    width: auto;
+    border-radius: 0%;
+}
+.btn-google:link,
+.btn-google:visited,
+.btn-google:active,
+.btn-google:hover{
+    color: #fff;
+    background: #e44b34;
+    text-decoration: none;
 }
