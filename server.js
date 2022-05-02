@@ -920,6 +920,61 @@ app.post('/leaveComment/:id',requireLogin,(req,res) => {
         })
     })
 })
+// Start Friend Request Process
+app.get('/sendFriendRequest/:id', requireLogin,(req,res) => {
+    User.findOne({_id:req.params.id})
+    .then((user) => {
+        let newFriendRequest = {
+            friend: req.user._id
+        }
+        user.friends.push(newFriendRequest)
+        user.save((err,user) => {
+            if (err) {
+                throw err;
+            }
+            if (user) {
+                res.render('friends/askFriendRequest', {
+                    title: 'Request',
+                    newFriend: user
+                })
+            }
+        })
+    })
+})
+app.get('/showFriendRequest/:id',requireLogin,(req,res) => {
+    User.findOne({_id:req.params.id})
+    .then((userRequest) => {
+        res.render('friends/showFriendRequest',{
+            title:'Request',
+            newFriend: userRequest
+        })
+    })
+})
+// Accept friend request
+app.get('/acceptFriend/:id',requireLogin,(req,res) => {
+    User.findById({_id:req.user._id})
+    .populate('friends.friend')
+    .then((user) => {
+        user.friends.filter((friend) => {
+            if (friend._id === req.params.id) {
+                friend.isFriend = true;
+                user.save()
+                .then(() => {
+                    res.render('friends/friendAccepted',{
+                        title: 'Accepted',
+                        friend: friend
+                    })
+                })
+            }else{
+                res.render('friends/404',{
+                    title: 'Not Found',
+                })
+            }
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+})
 app.get('/logout',(req,res) => {
     User.findById({_id:req.user._id})
     .then((user) => {

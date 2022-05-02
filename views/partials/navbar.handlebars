@@ -41,6 +41,28 @@
     </script>
     {{/if}}
 
+    {{#each user}}
+
+    {{#each friends}}
+    {{#if isFriend}}
+    
+    {{else}}
+    <a class="navbar-brand" href="/showFriendRequest/{{friend._id}}">
+        <i id="friendRequestIcon" class="fa fa-user-plus"></i>
+    </a>
+    <script>
+      setInterval(function(){
+        document.getElementById('friendRequestIcon').style.color = 'red';
+      },20)
+      setInterval(function(){
+        document.getElementById('friendRequestIcon').style.color = 'white';
+      },50)
+    </script>
+    {{/if}}
+    {{/each}}
+
+    {{/each}}
+
     <a class="navbar-brand" href="#">{{title}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
