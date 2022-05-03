@@ -1,3 +1,5 @@
+{{#each userInfo}}
+{{#each friends}}
 <div class="card" style="width: 18rem;">
   <img src="{{friend.image}}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -6,3 +8,5 @@
     <a href="/userProfile/{{friend._id}}" class="btn btn-primary">View Profile</a>
   </div>
 </div>
+{{/each}}
+{{/each}}

@@ -956,23 +956,64 @@ app.get('/acceptFriend/:id',requireLogin,(req,res) => {
     .populate('friends.friend')
     .then((user) => {
         user.friends.filter((friend) => {
-            if (friend._id === req.params.id) {
+            if (friend._id = req.params.id) {
                 friend.isFriend = true;
                 user.save()
                 .then(() => {
-                    res.render('friends/friendAccepted',{
-                        title: 'Accepted',
-                        friend: friend
+                    User.findById({_id:req.user._id})
+                    .populate('friends.friend')
+                    .sort({date:'desc'})
+                    .then((user) => {
+                        res.render('friends/friendAccepted',{
+                            title: 'Friends',
+                            userInfo:user
+                        })
                     })
                 })
             }else{
                 res.render('friends/404',{
-                    title: 'Not Found',
+                    title: 'Not Found'
                 })
             }
         })
     }).catch((err) => {
         console.log(err);
+    })
+})
+app.get('/friends',requireLogin, (req,res) => {
+    User.findById({_id:req.user._id})
+    .populate('friends.friend')
+    .then((user) => {
+        res.render('friends/friends',{
+            title:'Friends',
+            userFriends:user
+        })
+    })
+})
+// Reject Friend Request
+app.get('/rejectFriend/:id',requireLogin,(req,res) => {
+    User.findById({_id:req.user._id})
+    .populate('friends.friend')
+    .then((user) => {
+        user.friends.filter((friend) => {
+            if (friend._id = req.params.id) {
+                user.friends.pop(friend)
+                user.save()
+                .then(() => {
+                    User.findOne({_id:req.params.id})
+                    .then((friend) => {
+                        res.render('friends/rejectFriendRequest',{
+                            title: 'Rejected',
+                            friend:friend
+                        })
+                    })
+                })
+            }else{
+                res.render('friends/404',{
+                    title:'Not Found'
+                })
+            }
+        })
     })
 })
 app.get('/logout',(req,res) => {
